@@ -1,0 +1,12 @@
+name: assignment
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python
+  - pandas
+  - geopandas
+  - shapely
+  - notebook
+  - folium
+  - cartopy

@@ -1,0 +1,41 @@
+name,category,lat,lon
+London Heathrow,International,51.4775,-0.4614
+London Gatwick,International,51.1481,-0.1903
+Manchester,International,53.3539,-2.2750
+London Stansted,International,51.8850,0.2350
+London Luton,International,51.8747,-0.3683
+Edinburgh,International,55.9500,-3.3725
+Birmingham,International,52.4539,-1.7481
+Bristol,International,51.3828,-2.7192
+Glasgow,International,55.8719,-4.4331
+Belfast International,European,54.6575,-6.2158
+Newcastle,International,55.0381,-1.6897
+Liverpool,European,53.3336,-2.8497
+Leeds Bradford,European,53.8661,-1.6608
+East Midlands,European,52.8333,-1.3333
+London City,European,51.5053,0.0553
+Aberdeen,European,57.2025,-2.1981
+Belfast City,Domestic,54.6181,-5.8725
+Jersey,Domestic,49.2081,-2.1953
+Cardiff,European,51.3967,-3.3433
+Bournemouth,European,50.7800,-1.8425
+Inverness,European,57.5425,-4.0475
+Guernsey,Domestic,49.4347,-2.6019
+Southampton,European,50.9503,-1.3567
+Isle of Man,Domestic,54.0833,-4.6233
+Glasgow Prestwick,European,55.5094,-4.5944
+Exeter,European,50.7344,-3.4139
+Norwich,European,52.6758,1.2828
+Sumburgh,Domestic,59.8814,-1.2939
+Newquay,European,50.4408,-4.9953
+Teesside ,European,54.5092,-1.4294
+City of Derry,Domestic,55.0428,-7.1619
+Kirkwall,Domestic,58.9581,-2.9006
+Stornoway,Domestic,58.2156,-6.3311
+Humberside,European,53.5744,-0.3508
+London Southend,European,51.5703,0.6933
+St Mary's,Domestic,49.9133,-6.2917
+Land's End,Domestic,50.1028,-5.6706
+Alderney,Domestic,49.7067,-2.2144
+Dundee,Domestic,56.4525,-3.0258
+Sumburgh,Domestic,59.8814,-1.2939
