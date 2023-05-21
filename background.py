@@ -20,6 +20,10 @@ print("latitude = ", getLoc.latitude)
 print("Longitude = ", getLoc.longitude)
 
 
+
+
+
+
 outline = gpd.read_file('data_files/UK_Outline.shp')
 outline.to_crs(epsg=27700, inplace=True)
 #print(outline.head())
