@@ -2,20 +2,23 @@ import pandas as pd
 import geopandas as gpd
 import folium
 from geopy.geocoders import Nominatim
-from shapely import Point
+from shapely.geometry import Point
 import fiona
-import shapely.geometry
+import shapely
 
 # calculate lat & lon from inputted location
 loc = Nominatim(user_agent="GetLoc")
-getLoc = loc.geocode("Morpeth")
+getLoc = loc.geocode("Brighton")
 
 # print location & coordinates
-print(getLoc.address)
-print("latitude = ", getLoc.latitude)
-print("Longitude = ", getLoc.longitude)
+#print(getLoc.address)
+#print("latitude = ", getLoc.latitude)
+#print("Longitude = ", getLoc.longitude)
 
 m = folium.Map(location=(getLoc.latitude, getLoc.longitude), zoom_start=7, tiles="cartodb positron")
+
+loc = Point(getLoc.latitude, getLoc.longitude)
+print(loc)
 
 pt = gpd.GeoDataFrame({
     'lat': [getLoc.latitude],
@@ -23,10 +26,11 @@ pt = gpd.GeoDataFrame({
     'name': [getLoc.address],
 },
     geometry=gpd.points_from_xy([getLoc.longitude], [getLoc.latitude]),  # add geometry to user location
-    crs='epsg:27700',  # 4326
-    dtype=str)
+    crs='epsg:2770',  # 4326
+)
+# dtype=str)
 
-print(pt)
+#print(pt)
 
 # Point((getLoc.latitude, getLoc.longitude))
 
@@ -45,16 +49,17 @@ df = pd.read_csv('data_files/Airports.csv')  # read the csv data
 airports = gpd.GeoDataFrame(df[['name', 'category', 'lon', 'lat']],
                             # use the csv data, but only the name/website columns
                             geometry=gpd.points_from_xy(df['lon'], df['lat']),  # set the geometry using points_from_xy
-                            crs='epsg:27700',
-                            # set the CRS using a text representation of the EPSG code for WGS84 lat/lon
-                            dtype=str)
+                            crs='epsg:2770',
+                            )
+# set the CRS using a text representation of the EPSG code for WGS84 lat/lon
+# dtype=str)
 
-airports.set_crs(epsg=27700, inplace=True)
 
-airports['distance'] = airports['geometry'].distance(pt)
-airports.sort_values( by='distance', ascending=True, inplace=True)
+airports['distance'] = airports['geometry'].distance(loc)
+airports.sort_values(by='distance', ascending=True, inplace=True)
 
-print(airports.head(5))  # show the new geodataframe
+airports.set_crs(epsg=4326, allow_override=True, inplace=True)
+print(airports.head(4))  # show the new geodataframe
 
 # add the airport points to the existing map
 airports.explore('category',
