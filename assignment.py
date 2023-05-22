@@ -3,22 +3,25 @@ import geopandas as gpd
 import folium
 from geopy.geocoders import Nominatim
 from shapely.geometry import Point
+from math import cos, sin, asin, sqrt, radians
+import pyproj
 import fiona
 import shapely
 
+
 # calculate lat & lon from inputted location
 loc = Nominatim(user_agent="GetLoc")
-getLoc = loc.geocode("Brighton")
+getLoc = loc.geocode("washington") # enter location for distance to be calculated
 
 # print location & coordinates
-#print(getLoc.address)
-#print("latitude = ", getLoc.latitude)
-#print("Longitude = ", getLoc.longitude)
+print(getLoc.address)
+print("latitude = ", getLoc.latitude)
+print("Longitude = ", getLoc.longitude)
 
 m = folium.Map(location=(getLoc.latitude, getLoc.longitude), zoom_start=7, tiles="cartodb positron")
 
-loc = Point(getLoc.latitude, getLoc.longitude)
-print(loc)
+user_location = Point(getLoc.latitude, getLoc.longitude)
+print(user_location)
 
 pt = gpd.GeoDataFrame({
     'lat': [getLoc.latitude],
@@ -30,7 +33,7 @@ pt = gpd.GeoDataFrame({
 )
 # dtype=str)
 
-#print(pt)
+# print(pt)
 
 # Point((getLoc.latitude, getLoc.longitude))
 
@@ -45,9 +48,9 @@ for i in range(0, len(pt)):
 
 df = pd.read_csv('data_files/Airports.csv')  # read the csv data
 
-# create a new geodataframe
+# create a new geodataframe for airport locations
 airports = gpd.GeoDataFrame(df[['name', 'category', 'lon', 'lat']],
-                            # use the csv data, but only the name/website columns
+                            # use the csv data
                             geometry=gpd.points_from_xy(df['lon'], df['lat']),  # set the geometry using points_from_xy
                             crs='epsg:2770',
                             )
@@ -55,18 +58,25 @@ airports = gpd.GeoDataFrame(df[['name', 'category', 'lon', 'lat']],
 # dtype=str)
 
 
-airports['distance'] = airports['geometry'].distance(loc)
+airports['distance'] = airports['geometry'].distance(user_location)
 airports.sort_values(by='distance', ascending=True, inplace=True)
+airports.reset_index(inplace=True)
 
-airports.set_crs(epsg=4326, allow_override=True, inplace=True)
-print(airports.head(4))  # show the new geodataframe
+
+def nearest_airport():
+    airports.set_crs(epsg=4326, allow_override=True, inplace=True)
+    print(airports.head)  # show the new geodataframe
+    return airports.head()
+
+
+nearest_airport()
 
 # add the airport points to the existing map
 airports.explore('category',
-                 m=m,  # add the markers to the same map we just created
-                 marker_type='circle',  # use a marker for the points, instead of a circle
-                 popup=True,  # show the information as a popup when we click on the marker
-                 legend=True,  # don't show a separate legend for the point layer
+                 m=m,  # add the markers to the current map
+                 marker_type='circle',  # circle marker on map
+                 popup=True,  # information popup once clicked
+                 legend=True,  # show legend
                  )
 
 m.save('map.html')
