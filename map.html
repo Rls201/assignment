@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_6ce5f031e38680a224261b8eb2241625 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+    
+                    <style>
+                        .foliumtooltip {
+                            
+                        }
+                       .foliumtooltip table{
+                            margin: auto;
+                        }
+                        .foliumtooltip tr{
+                            text-align: left;
+                        }
+                        .foliumtooltip th{
+                            padding: 2px; padding-right: 8px;
+                        }
+                    </style>
+            
+    
+                    <style>
+                        .foliumpopup {
+                            margin: auto;
+                        }
+                       .foliumpopup table{
+                            margin: auto;
+                        }
+                        .foliumpopup tr{
+                            text-align: left;
+                        }
+                        .foliumpopup th{
+                            padding: 2px; padding-right: 8px;
+                        }
+                    </style>
+            
+    
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script>$( function() {
+        $( ".maplegend" ).draggable({
+            start: function (event, ui) {
+                $(this).css({
+                    right: "auto",
+                    top: "auto",
+                    bottom: "auto"
+                });
+            }
+        });
+    });
+    </script>
+    <style type='text/css'>
+      .maplegend {
+        position: absolute;
+        z-index:9999;
+        background-color: rgba(255, 255, 255, .8);
+        border-radius: 5px;
+        box-shadow: 0 0 15px rgba(0,0,0,0.2);
+        padding: 10px;
+        font: 12px/14px Arial, Helvetica, sans-serif;
+        right: 10px;
+        bottom: 20px;
+      }
+      .maplegend .legend-title {
+        text-align: left;
+        margin-bottom: 5px;
+        font-weight: bold;
+        }
+      .maplegend .legend-scale ul {
+        margin: 0;
+        margin-bottom: 0px;
+        padding: 0;
+        float: left;
+        list-style: none;
+        }
+      .maplegend .legend-scale ul li {
+        list-style: none;
+        margin-left: 0;
+        line-height: 16px;
+        margin-bottom: 2px;
+        }
+      .maplegend ul.legend-labels li span {
+        display: block;
+        float: left;
+        height: 14px;
+        width: 14px;
+        margin-right: 5px;
+        margin-left: 0;
+        border: 0px solid #ccc;
+        }
+      .maplegend .legend-source {
+        color: #777;
+        clear: both;
+        }
+      .maplegend a {
+        color: #777;
+        }
+    </style>
+    
+</head>
+<body>
+    
+    
+    <div id='maplegend category' class='maplegend'>
+        <div class='legend-title'>category</div>
+        <div class='legend-scale'>
+            <ul class='legend-labels'>
+                <li><span style='background:#1f77b4'></span>Domestic</li>
+                <li><span style='background:#8c564b'></span>European</li>
+                <li><span style='background:#9edae5'></span>International</li>
+            </ul>
+        </div>
+    </div>
+    
+    
+            <div class="folium-map" id="map_6ce5f031e38680a224261b8eb2241625" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_6ce5f031e38680a224261b8eb2241625 = L.map(
+                "map_6ce5f031e38680a224261b8eb2241625",
+                {
+                    center: [55.1675437, -1.6907444],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 7,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_a75fa60d3f70e4222486d9ac957a84d0 = L.tileLayer(
+                "https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png",
+                {"attribution": "\u0026copy; \u003ca target=\"_blank\" href=\"http://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca target=\"_blank\" href=\"http://cartodb.com/attributions\"\u003eCartoDB\u003c/a\u003e, CartoDB \u003ca target=\"_blank\" href =\"http://cartodb.com/attributions\"\u003eattributions\u003c/a\u003e", "detectRetina": false, "maxNativeZoom": 18, "maxZoom": 18, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            ).addTo(map_6ce5f031e38680a224261b8eb2241625);
+        
+    
+            var marker_50d84cb752a3bac96f0d8f1c888d5a52 = L.marker(
+                [55.1675437, -1.6907444],
+                {}
+            ).addTo(map_6ce5f031e38680a224261b8eb2241625);
+        
+    
+        var popup_b993d7f430c67ab79315e48df3eafe68 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_a8cd7a2f6adb4a4cc5602c4c4bb23f79 = $(`<div id="html_a8cd7a2f6adb4a4cc5602c4c4bb23f79" style="width: 100.0%; height: 100.0%;">Morpeth, Northumberland, North of Tyne, England, United Kingdom</div>`)[0];
+                popup_b993d7f430c67ab79315e48df3eafe68.setContent(html_a8cd7a2f6adb4a4cc5602c4c4bb23f79);
+            
+        
+
+        marker_50d84cb752a3bac96f0d8f1c888d5a52.bindPopup(popup_b993d7f430c67ab79315e48df3eafe68)
+        ;
+
+        
+    
+    
+        function geo_json_30db14fe19d2b1be8c5b4e1df700584e_styler(feature) {
+            switch(feature.id) {
+                case "1": case "5": case "6": case "9": case "14": case "15": case "19": case "25": case "27": case "31": 
+                    return {"color": "#9edae5", "fillColor": "#9edae5", "fillOpacity": 0.5, "weight": 2};
+                case "4": case "7": case "8": case "22": case "24": case "26": case "29": case "32": case "34": case "35": case "37": case "38": case "39": 
+                    return {"color": "#1f77b4", "fillColor": "#1f77b4", "fillOpacity": 0.5, "weight": 2};
+                default:
+                    return {"color": "#8c564b", "fillColor": "#8c564b", "fillOpacity": 0.5, "weight": 2};
+            }
+        }
+        function geo_json_30db14fe19d2b1be8c5b4e1df700584e_highlighter(feature) {
+            switch(feature.id) {
+                default:
+                    return {"fillOpacity": 0.75};
+            }
+        }
+        function geo_json_30db14fe19d2b1be8c5b4e1df700584e_pointToLayer(feature, latlng) {
+            var opts = {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 50, "stroke": true, "weight": 3};
+            
+            let style = geo_json_30db14fe19d2b1be8c5b4e1df700584e_styler(feature)
+            Object.assign(opts, style)
+            
+            return new L.circle(latlng, opts)
+        }
+
+        function geo_json_30db14fe19d2b1be8c5b4e1df700584e_onEachFeature(feature, layer) {
+            layer.on({
+                mouseout: function(e) {
+                    if(typeof e.target.setStyle === "function"){
+                        geo_json_30db14fe19d2b1be8c5b4e1df700584e.resetStyle(e.target);
+                    }
+                },
+                mouseover: function(e) {
+                    if(typeof e.target.setStyle === "function"){
+                        const highlightStyle = geo_json_30db14fe19d2b1be8c5b4e1df700584e_highlighter(e.target.feature)
+                        e.target.setStyle(highlightStyle);
+                    }
+                },
+            });
+        };
+        var geo_json_30db14fe19d2b1be8c5b4e1df700584e = L.geoJson(null, {
+                onEachFeature: geo_json_30db14fe19d2b1be8c5b4e1df700584e_onEachFeature,
+            
+                style: geo_json_30db14fe19d2b1be8c5b4e1df700584e_styler,
+                pointToLayer: geo_json_30db14fe19d2b1be8c5b4e1df700584e_pointToLayer
+        });
+
+        function geo_json_30db14fe19d2b1be8c5b4e1df700584e_add (data) {
+            geo_json_30db14fe19d2b1be8c5b4e1df700584e
+                .addData(data)
+                .addTo(map_6ce5f031e38680a224261b8eb2241625);
+        }
+            geo_json_30db14fe19d2b1be8c5b4e1df700584e_add({"bbox": [-7.1619, 49.2081, 1.2828, 59.8814], "features": [{"bbox": [0.6933, 51.5703, 0.6933, 51.5703], "geometry": {"coordinates": [0.6933, 51.5703], "type": "Point"}, "id": "0", "properties": {"__folium_color": "#8c564b", "category": "European", "distance": 76.18518279341306, "index": 34, "lat": 51.5703, "lon": 0.6933, "name": "London Southend"}, "type": "Feature"}, {"bbox": [-0.1903, 51.1481, -0.1903, 51.1481], "geometry": {"coordinates": [-0.1903, 51.1481], "type": "Point"}, "id": "1", "properties": {"__folium_color": "#9edae5", "category": "International", "distance": 76.52734371870646, "index": 1, "lat": 51.1481, "lon": -0.1903, "name": "London Gatwick"}, "type": "Feature"}, {"bbox": [1.2828, 52.6758, 1.2828, 52.6758], "geometry": {"coordinates": [1.2828, 52.6758], "type": "Point"}, "id": "2", "properties": {"__folium_color": "#8c564b", "category": "European", "distance": 76.54597803681041, "index": 26, "lat": 52.6758, "lon": 1.2828, "name": "Norwich"}, "type": "Feature"}, {"bbox": [0.0553, 51.5053, 0.0553, 51.5053], "geometry": {"coordinates": [0.0553, 51.5053], "type": "Point"}, "id": "3", "properties": {"__folium_color": "#8c564b", "category": "European", "distance": 76.59751004735703, "index": 14, "lat": 51.5053, "lon": 0.0553, "name": "London City"}, "type": "Feature"}, {"bbox": [-2.1953, 49.2081, -2.1953, 49.2081], "geometry": {"coordinates": [-2.1953, 49.2081], "type": "Point"}, "id": "4", "properties": {"__folium_color": "#1f77b4", "category": "Domestic", "distance": 76.68890531625837, "index": 17, "lat": 49.2081, "lon": -2.1953, "name": "Jersey"}, "type": "Feature"}, {"bbox": [0.235, 51.885, 0.235, 51.885], "geometry": {"coordinates": [0.235, 51.885], "type": "Point"}, "id": "5", "properties": {"__folium_color": "#9edae5", "category": "International", "distance": 76.73294432879884, "index": 3, "lat": 51.885, "lon": 0.235, "name": "London Stansted"}, "type": "Feature"}, {"bbox": [-0.4614, 51.4775, -0.4614, 51.4775], "geometry": {"coordinates": [-0.4614, 51.4775], "type": "Point"}, "id": "6", "properties": {"__folium_color": "#9edae5", "category": "International", "distance": 76.95090376178763, "index": 0, "lat": 51.4775, "lon": -0.4614, "name": "London Heathrow"}, "type": "Feature"}, {"bbox": [-2.2144, 49.7067, -2.2144, 49.7067], "geometry": {"coordinates": [-2.2144, 49.7067], "type": "Point"}, "id": "7", "properties": {"__folium_color": "#1f77b4", "category": "Domestic", "distance": 77.0349579972694, "index": 37, "lat": 49.7067, "lon": -2.2144, "name": "Alderney"}, "type": "Feature"}, {"bbox": [-2.6019, 49.4347, -2.6019, 49.4347], "geometry": {"coordinates": [-2.6019, 49.4347], "type": "Point"}, "id": "8", "properties": {"__folium_color": "#1f77b4", "category": "Domestic", "distance": 77.1435006368324, "index": 21, "lat": 49.4347, "lon": -2.6019, "name": "Guernsey"}, "type": "Feature"}, {"bbox": [-0.3683, 51.8747, -0.3683, 51.8747], "geometry": {"coordinates": [-0.3683, 51.8747], "type": "Point"}, "id": "9", "properties": {"__folium_color": "#9edae5", "category": "International", "distance": 77.15884116055865, "index": 4, "lat": 51.8747, "lon": -0.3683, "name": "London Luton"}, "type": "Feature"}, {"bbox": [-1.3567, 50.9503, -1.3567, 50.9503], "geometry": {"coordinates": [-1.3567, 50.9503], "type": "Point"}, "id": "10", "properties": {"__folium_color": "#8c564b", "category": "European", "distance": 77.24033713921607, "index": 22, "lat": 50.9503, "lon": -1.3567, "name": "Southampton"}, "type": "Feature"}, {"bbox": [-1.8425, 50.78, -1.8425, 50.78], "geometry": {"coordinates": [-1.8425, 50.78], "type": "Point"}, "id": "11", "properties": {"__folium_color": "#8c564b", "category": "European", "distance": 77.48112092997908, "index": 19, "lat": 50.78, "lon": -1.8425, "name": "Bournemouth"}, "type": "Feature"}, {"bbox": [-0.3508, 53.5744, -0.3508, 53.5744], "geometry": {"coordinates": [-0.3508, 53.5744], "type": "Point"}, "id": "12", "properties": {"__folium_color": "#8c564b", "category": "European", "distance": 78.33596027843267, "index": 33, "lat": 53.5744, "lon": -0.3508, "name": "Humberside"}, "type": "Feature"}, {"bbox": [-1.3333, 52.8333, -1.3333, 52.8333], "geometry": {"coordinates": [-1.3333, 52.8333], "type": "Point"}, "id": "13", "properties": {"__folium_color": "#8c564b", "category": "European", "distance": 78.51889426466091, "index": 13, "lat": 52.8333, "lon": -1.3333, "name": "East Midlands"}, "type": "Feature"}, {"bbox": [-2.7192, 51.3828, -2.7192, 51.3828], "geometry": {"coordinates": [-2.7192, 51.3828], "type": "Point"}, "id": "14", "properties": {"__folium_color": "#9edae5", "category": "International", "distance": 78.53455425077716, "index": 7, "lat": 51.3828, "lon": -2.7192, "name": "Bristol"}, "type": "Feature"}, {"bbox": [-1.7481, 52.4539, -1.7481, 52.4539], "geometry": {"coordinates": [-1.7481, 52.4539], "type": "Point"}, "id": "15", "properties": {"__folium_color": "#9edae5", "category": "International", "distance": 78.55592285109888, "index": 6, "lat": 52.4539, "lon": -1.7481, "name": "Birmingham"}, "type": "Feature"}, {"bbox": [-3.4139, 50.7344, -3.4139, 50.7344], "geometry": {"coordinates": [-3.4139, 50.7344], "type": "Point"}, "id": "16", "properties": {"__folium_color": "#8c564b", "category": "European", "distance": 78.61412920930385, "index": 25, "lat": 50.7344, "lon": -3.4139, "name": "Exeter"}, "type": "Feature"}, {"bbox": [-3.3433, 51.3967, -3.3433, 51.3967], "geometry": {"coordinates": [-3.3433, 51.3967], "type": "Point"}, "id": "17", "properties": {"__folium_color": "#8c564b", "category": "European", "distance": 79.00503517756904, "index": 18, "lat": 51.3967, "lon": -3.3433, "name": "Cardiff"}, "type": "Feature"}, {"bbox": [-1.6608, 53.8661, -1.6608, 53.8661], "geometry": {"coordinates": [-1.6608, 53.8661], "type": "Point"}, "id": "18", "properties": {"__folium_color": "#8c564b", "category": "European", "distance": 79.47341446906093, "index": 12, "lat": 53.8661, "lon": -1.6608, "name": "Leeds Bradford"}, "type": "Feature"}, {"bbox": [-2.275, 53.3539, -2.275, 53.3539], "geometry": {"coordinates": [-2.275, 53.3539], "type": "Point"}, "id": "19", "properties": {"__folium_color": "#9edae5", "category": "International", "distance": 79.55852376614878, "index": 2, "lat": 53.3539, "lon": -2.275, "name": "Manchester"}, "type": "Feature"}, {"bbox": [-4.9953, 50.4408, -4.9953, 50.4408], "geometry": {"coordinates": [-4.9953, 50.4408], "type": "Point"}, "id": "20", "properties": {"__folium_color": "#8c564b", "category": "European", "distance": 79.60694494577595, "index": 28, "lat": 50.4408, "lon": -4.9953, "name": "Newquay"}, "type": "Feature"}, {"bbox": [-1.4294, 54.5092, -1.4294, 54.5092], "geometry": {"coordinates": [-1.4294, 54.5092], "type": "Point"}, "id": "21", "properties": {"__folium_color": "#8c564b", "category": "European", "distance": 79.75993848257446, "index": 29, "lat": 54.5092, "lon": -1.4294, "name": "Teesside "}, "type": "Feature"}, {"bbox": [-5.6706, 50.1028, -5.6706, 50.1028], "geometry": {"coordinates": [-5.6706, 50.1028], "type": "Point"}, "id": "22", "properties": {"__folium_color": "#1f77b4", "category": "Domestic", "distance": 79.89900481468227, "index": 36, "lat": 50.1028, "lon": -5.6706, "name": "Land\u0027s End"}, "type": "Feature"}, {"bbox": [-2.8497, 53.3336, -2.8497, 53.3336], "geometry": {"coordinates": [-2.8497, 53.3336], "type": "Point"}, "id": "23", "properties": {"__folium_color": "#8c564b", "category": "European", "distance": 79.9604842606334, "index": 11, "lat": 53.3336, "lon": -2.8497, "name": "Liverpool"}, "type": "Feature"}, {"bbox": [-6.2917, 49.9133, -6.2917, 49.9133], "geometry": {"coordinates": [-6.2917, 49.9133], "type": "Point"}, "id": "24", "properties": {"__folium_color": "#1f77b4", "category": "Domestic", "distance": 80.25095659624975, "index": 35, "lat": 49.9133, "lon": -6.2917, "name": "St Mary\u0027s"}, "type": "Feature"}, {"bbox": [-1.6897, 55.0381, -1.6897, 55.0381], "geometry": {"coordinates": [-1.6897, 55.0381], "type": "Point"}, "id": "25", "properties": {"__folium_color": "#9edae5", "category": "International", "distance": 80.31754446022738, "index": 10, "lat": 55.0381, "lon": -1.6897, "name": "Newcastle"}, "type": "Feature"}, {"bbox": [-4.6233, 54.0833, -4.6233, 54.0833], "geometry": {"coordinates": [-4.6233, 54.0833], "type": "Point"}, "id": "26", "properties": {"__folium_color": "#1f77b4", "category": "Domestic", "distance": 81.76606275889161, "index": 23, "lat": 54.0833, "lon": -4.6233, "name": "Isle of Man"}, "type": "Feature"}, {"bbox": [-3.3725, 55.95, -3.3725, 55.95], "geometry": {"coordinates": [-3.3725, 55.95], "type": "Point"}, "id": "27", "properties": {"__folium_color": "#9edae5", "category": "International", "distance": 82.15468417189638, "index": 5, "lat": 55.95, "lon": -3.3725, "name": "Edinburgh"}, "type": "Feature"}, {"bbox": [-2.1981, 57.2025, -2.1981, 57.2025], "geometry": {"coordinates": [-2.1981, 57.2025], "type": "Point"}, "id": "28", "properties": {"__folium_color": "#8c564b", "category": "European", "distance": 82.21454441322096, "index": 15, "lat": 57.2025, "lon": -2.1981, "name": "Aberdeen"}, "type": "Feature"}, {"bbox": [-3.0258, 56.4525, -3.0258, 56.4525], "geometry": {"coordinates": [-3.0258, 56.4525], "type": "Point"}, "id": "29", "properties": {"__folium_color": "#1f77b4", "category": "Domestic", "distance": 82.26239797346331, "index": 38, "lat": 56.4525, "lon": -3.0258, "name": "Dundee"}, "type": "Feature"}, {"bbox": [-4.5944, 55.5094, -4.5944, 55.5094], "geometry": {"coordinates": [-4.5944, 55.5094], "type": "Point"}, "id": "30", "properties": {"__folium_color": "#8c564b", "category": "European", "distance": 82.72452135964778, "index": 24, "lat": 55.5094, "lon": -4.5944, "name": "Glasgow Prestwick"}, "type": "Feature"}, {"bbox": [-4.4331, 55.8719, -4.4331, 55.8719], "geometry": {"coordinates": [-4.4331, 55.8719], "type": "Point"}, "id": "31", "properties": {"__folium_color": "#9edae5", "category": "International", "distance": 82.85948804919809, "index": 8, "lat": 55.8719, "lon": -4.4331, "name": "Glasgow"}, "type": "Feature"}, {"bbox": [-5.8725, 54.6181, -5.8725, 54.6181], "geometry": {"coordinates": [-5.8725, 54.6181], "type": "Point"}, "id": "32", "properties": {"__folium_color": "#1f77b4", "category": "Domestic", "distance": 83.04560730442833, "index": 16, "lat": 54.6181, "lon": -5.8725, "name": "Belfast City"}, "type": "Feature"}, {"bbox": [-6.2158, 54.6575, -6.2158, 54.6575], "geometry": {"coordinates": [-6.2158, 54.6575], "type": "Point"}, "id": "33", "properties": {"__folium_color": "#8c564b", "category": "European", "distance": 83.32490342481329, "index": 9, "lat": 54.6575, "lon": -6.2158, "name": "Belfast International"}, "type": "Feature"}, {"bbox": [-1.2939, 59.8814, -1.2939, 59.8814], "geometry": {"coordinates": [-1.2939, 59.8814], "type": "Point"}, "id": "34", "properties": {"__folium_color": "#1f77b4", "category": "Domestic", "distance": 83.54055057696664, "index": 27, "lat": 59.8814, "lon": -1.2939, "name": "Sumburgh"}, "type": "Feature"}, {"bbox": [-1.2939, 59.8814, -1.2939, 59.8814], "geometry": {"coordinates": [-1.2939, 59.8814], "type": "Point"}, "id": "35", "properties": {"__folium_color": "#1f77b4", "category": "Domestic", "distance": 83.54055057696664, "index": 39, "lat": 59.8814, "lon": -1.2939, "name": "Sumburgh"}, "type": "Feature"}, {"bbox": [-4.0475, 57.5425, -4.0475, 57.5425], "geometry": {"coordinates": [-4.0475, 57.5425], "type": "Point"}, "id": "36", "properties": {"__folium_color": "#8c564b", "category": "European", "distance": 83.75558872423404, "index": 20, "lat": 57.5425, "lon": -4.0475, "name": "Inverness"}, "type": "Feature"}, {"bbox": [-2.9006, 58.9581, -2.9006, 58.9581], "geometry": {"coordinates": [-2.9006, 58.9581], "type": "Point"}, "id": "37", "properties": {"__folium_color": "#1f77b4", "category": "Domestic", "distance": 83.96541930949468, "index": 31, "lat": 58.9581, "lon": -2.9006, "name": "Kirkwall"}, "type": "Feature"}, {"bbox": [-7.1619, 55.0428, -7.1619, 55.0428], "geometry": {"coordinates": [-7.1619, 55.0428], "type": "Point"}, "id": "38", "properties": {"__folium_color": "#1f77b4", "category": "Domestic", "distance": 84.28318107510087, "index": 30, "lat": 55.0428, "lon": -7.1619, "name": "City of Derry"}, "type": "Feature"}, {"bbox": [-6.3311, 58.2156, -6.3311, 58.2156], "geometry": {"coordinates": [-6.3311, 58.2156], "type": "Point"}, "id": "39", "properties": {"__folium_color": "#1f77b4", "category": "Domestic", "distance": 85.85367363317053, "index": 32, "lat": 58.2156, "lon": -6.3311, "name": "Stornoway"}, "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+    geo_json_30db14fe19d2b1be8c5b4e1df700584e.bindTooltip(
+    function(layer){
+    let div = L.DomUtil.create('div');
+    
+    let handleObject = feature=>typeof(feature)=='object' ? JSON.stringify(feature) : feature;
+    let fields = ["index", "name", "category", "lon", "lat", "distance"];
+    let aliases = ["index", "name", "category", "lon", "lat", "distance"];
+    let table = '<table>' +
+        String(
+        fields.map(
+        (v,i)=>
+        `<tr>
+            <th>${aliases[i]}</th>
+            
+            <td>${handleObject(layer.feature.properties[v])}</td>
+        </tr>`).join(''))
+    +'</table>';
+    div.innerHTML=table;
+    
+    return div
+    }
+    ,{"className": "foliumtooltip", "sticky": true});
+                     
+    
+    geo_json_30db14fe19d2b1be8c5b4e1df700584e.bindPopup(
+    function(layer){
+    let div = L.DomUtil.create('div');
+    
+    let handleObject = feature=>typeof(feature)=='object' ? JSON.stringify(feature) : feature;
+    let fields = ["index", "name", "category", "lon", "lat", "distance"];
+    let aliases = ["index", "name", "category", "lon", "lat", "distance"];
+    let table = '<table>' +
+        String(
+        fields.map(
+        (v,i)=>
+        `<tr>
+            <th>${aliases[i].toLocaleString()}</th>
+            
+            <td>${handleObject(layer.feature.properties[v]).toLocaleString()}</td>
+        </tr>`).join(''))
+    +'</table>';
+    div.innerHTML=table;
+    
+    return div
+    }
+    ,{"className": "foliumpopup"});
+                     
+</script>
+</html>
